@@ -4,5 +4,9 @@
 //Complejidad: MEDIA (2 puntos)
 
 function esPar($num) {
-    // Tu código aquí
+    if($num % 2 == 0){
+        return true;
+    } else {
+        return false;
+    }
 }
