@@ -24,5 +24,36 @@
 
 
 function validarTarjeta($numeroTarjeta) {
+    $digitosQueNoSeMultiplican = [];
+    $digitosMultiplicados = [];
+    $digitosFinales = [];
+    for($i = 0; $i < strlen($numeroTarjeta); $i = $i + 2){
+        $digitosMultiplicados[] = $numeroTarjeta[$i] * 2;
+    }
 
+    for($i = 1; $i < strlen($numeroTarjeta); $i = $i + 2){
+        $digitosQueNoSeMultiplican[] = $numeroTarjeta[$i];
+    }
+
+    foreach($digitosMultiplicados as $digito){
+         if($digito >= 10){
+             $digitosSumados = array_sum(str_split($digito));
+             $digitosFinales[] = $digitosSumados;
+        } else {
+             $digitosFinales[] = $digito;
+         }
+    }
+
+    $sumaDigitos = array_sum($digitosFinales) + array_sum($digitosQueNoSeMultiplican);
+
+    $sumaArray = (str_split($sumaDigitos));
+    if ($sumaArray[1] == 0){
+        return true;
+    } else {
+        return false;
+    }
+    
 }
+
+
+
